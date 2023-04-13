@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>code quiz</title>
+</head>
+
+<body>
+    <section class="header">
+        <a id="viewscores" href="#">View Highscores</a>
+        <!-- <a href="#">Time</a> -->
+    </section>
+
+    <section id="time" hidden>
+        <h2></h2> <!-- time element -->
+    </section>
+
+    <section id="facecard">
+        <h2>Coding Quiz Challenge</h2>
+        <p>Try to answer following code related questions with the time limits. Keep in mind the incorrect answers will
+            penalize your score by ten seconds!!</p>
+        <button id="startButton"> START QUIZ</button>
+    </section>
+
+    <section id="wrapper" hidden>
+        <section id="container">
+            <div id="questtitle"></div>
+            <div id="choices"></div>
+        </section>
+    </section>
+
+    <section class="card">
+        <section id="displayscore" hidden>
+            <form method="POST">
+                <label id="m1">"All done!!"</label>
+                <label id="m2"></label>
+                <label id="m3"></label>
+                <input type="text" name="nameinitials" id="m4" placeholder="name initials" />
+                <button id="submitinitials">Submit</button>
+            </form>
+        </section>
+        <section id="highscores" hidden>
+            <div id="scores"></div>
+            <div id="gobackbtn"></div>
+            <div id="clearscoresbtn"></div>
+        </section>
+
+    </section>
+
+    <script src="./app.js"></script>
+    <script src="./questions.js"></script>
+</body>
+
+</html>
