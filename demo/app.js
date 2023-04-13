@@ -9,7 +9,7 @@ let ans4El = document.querySelector("#ans4");
 let message2 = document.getElementById("m2");
 let message3 = document.getElementById("m3");
 let textarea = document.getElementById("m4");
-let signUpButton = document.querySelector("#submitinitials");
+let signup = document.querySelector("#signup");
 
 
 
@@ -27,13 +27,12 @@ document.getElementById("startButton").addEventListener(
 );
 
 //adding timer with 40 seconds,4 questions and for negative answers decrese 10 seconds.
-let timeLeft = 20;
+let timeLeft = 40;
 function startTime() {
     // let timeLeft = TIME_LIMIT;
     const timer = setInterval(() => {
         if (timeLeft <= 0) {
             clearInterval(timer);
-            // Code to handle when time runs out
             showScore();
         } else {
             timeEl.textContent = timeLeft;
@@ -57,15 +56,14 @@ function showQuestion() {
     for (let i = 0; i < current.choices.length; i++) {
         const choice = document.createElement("button");
         choice.innerText = current.choices[i];
-        choicesElem.addEventListener("click", function (e) {
+        choice.addEventListener("click", function (e) {
             var clickedChoice = e.target.innerText;
             checkAnswer(clickedChoice);
-            //console.log("Button clicked!");
         });
         choicesElem.appendChild(choice);
-
     }
 }
+
 
 
 function checkAnswer(clickedans) {
@@ -99,8 +97,8 @@ function showScore() {
 
 
 
-    signUpButton.addEventListener("click", function (event) {
-        // event.preventDefault();
+    signup.addEventListener("submit", function (event) {
+        event.preventDefault();
 
         var initials = textarea.value;
 
