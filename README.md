@@ -23,6 +23,10 @@ The URL of the GitHub repository that contains the code: https://github.com/Anju
 The URL of the deployed application: https://anju0806.github.io/code-quiz/
 
 # Screenshots
+![screencapture-index-html-png](https://user-images.githubusercontent.com/126565826/232118432-2e553a55-0259-4420-b152-b38b40076633.png)
+![screencapture-1index-html-](https://user-images.githubusercontent.com/126565826/232118577-d652c016-3a87-4e5b-bbb5-dbedbbf5b615.png)
+![screencapture-127-0-0-1-5501-index-html-2023-04-15-01_39_29](https://user-images.githubusercontent.com/126565826/232118627-8be7fd0a-cc98-4e36-aa4b-0766020f8d5a.png)
+![screencapture-127-0-0-1-5501-index-html-2023-04-15-01_39_29](https://user-images.githubusercontent.com/126565826/232118673-e1987e84-c65b-4b37-8ecc-456308025997.png)
 
 
 # Installation
