@@ -39,7 +39,7 @@ function startTime() {
             clearInterval(timerId);
             showScore();
         } else {
-            timeEl.textContent = timeLeft;
+            timeEl.textContent = "Time: "+timeLeft;
             timeLeft--;
 
         }
@@ -55,6 +55,8 @@ function showQuestion() {
     for (let i = 0; i < current.choices.length; i++) {
         const choice = document.createElement("button");
         choice.innerText = current.choices[i];
+        //adding a class to button for styling
+        choice.classList.add("choice-button");
         choice.addEventListener("click", function (e) {
             var clickedChoice = e.target.innerText;
             checkAnswer(clickedChoice);

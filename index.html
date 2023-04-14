@@ -3,55 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>code quiz</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Code Quiz</title>
 </head>
 
 <body>
-    <section class="header">
-        
+    <section>
         <a href="#" id="highscoreslink">View Highscores</a>
-        
     </section>
 
     <section id="time" hidden>
         <h2></h2> <!-- time element -->
     </section>
-
-    <section id="facecard">
-        <h2>Coding Quiz Challenge</h2>
-        <p>Try to answer following code related questions with the time limits. Keep in mind the incorrect answers will
-            penalize your score by ten seconds!!</p>
-        <button id="startButton"> START QUIZ</button>
-    </section>
-
-    <section id="wrapper" hidden>
-        <section id="container">
-            <div id="questtitle"></div>
-            <div id="choices"></div>
+    <section class="container">
+        <section id="facecard">
+            <h2 class="title">Coding Quiz Challenge</h2>
+            <p>Try to answer following code related questions with the time limits. Keep in mind the incorrect answers
+                will
+                penalize your score by ten seconds!!</p>
+            <button class ="quiz-button" id="startButton"> START QUIZ</button>
         </section>
-    </section>
 
-    <section class="card">
-        <section id="displayscore" hidden>
-            <form id="saveinitials">
-                <label id="m1">"All done!!"</label>
-                <label id="m2"></label>
-                <label id="m3"></label>
-                <input type="text"  id="initials" />
-                <button id="submit-scores">Submit</button>
-            </form>
+        <section id="wrapper" hidden>
+            <section id="container">
+                <div id="questtitle"></div>
+                <div id="choices"></div>
+            </section>
         </section>
-        <section id="highscores" hidden>
-            <label id="s1">Highscores</label>
-            <ol id="displayList"></ol>
-            <button id="gobackbtn">Go Back</button>
-            <button id="clearscoresbtn">Clear Highscores</button>
-        </section>
-        
-          
 
+        <section class="card">
+            <section id="displayscore" hidden>
+                <form id="saveinitials">
+                   
+                    <h2 class="title">All done!!</h2><br>
+                    <label id="m2"></label><br><br>
+                    <label id="m3"></label>
+                    <input type="text" id="initials" /><br>
+                    <button id="submit-scores">Submit</button>
+                </form>
+            </section>
+            <section id="highscores" hidden>
+                
+                <h2 class="title" id="s1">Highscores</h2>
+                <ol id="displayList"></ol>
+                <label id="l1"></label><br><br>
+                <button id="gobackbtn">Go Back</button>
+                <button id="clearscoresbtn">Clear Highscores</button>
+            </section>
+        </section>
     </section>
     <script src="./assets/highscores.js"></script>
     <script src="./assets/questions.js"></script>
@@ -59,7 +60,7 @@
     <!-- <footer>
 		<p> My JS Quiz </p>
 	</footer> -->
-    
+
 </body>
 
 </html>
