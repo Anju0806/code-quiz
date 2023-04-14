@@ -34,24 +34,25 @@
 
     <section class="card">
         <section id="displayscore" hidden>
-            <form id="signup">
+            <form id="saveinitials">
                 <label id="m1">"All done!!"</label>
                 <label id="m2"></label>
                 <label id="m3"></label>
-                <input type="text" name="nameinitials" id="m4" placeholder="name initials" />
-                <button id="submitinitials">Submit</button>
+                <input type="text"  id="initials" />
+                <button id="submit-scores">Submit</button>
             </form>
         </section>
         <section id="highscores" hidden>
-            <div id="scores"></div>
-            <div id="gobackbtn"></div>
-            <div id="clearscoresbtn"></div>
+            <label id="s1">Highscores</label>
+            <ul id="displayList"></ul>      
+            <button id="gobackbtn">Go Back</button>
+            <button id="clearscoresbtn">Clear Highscores</button>
         </section>
 
     </section>
-
-    <script src="./app.js"></script>
     <script src="./questions.js"></script>
+    <script src="./app.js"></script>
+    
 </body>
 
 </html>

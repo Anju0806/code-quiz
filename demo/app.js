@@ -8,11 +8,13 @@ let ans3El = document.querySelector("#ans3");
 let ans4El = document.querySelector("#ans4");
 let message2 = document.getElementById("m2");
 let message3 = document.getElementById("m3");
-let textarea = document.getElementById("m4");
-let signup = document.querySelector("#signup");
 
+let savescore = document.querySelector("#submit-scores");
+//let displayList = document.querySelector("#todo-list");
 
+const initialsInput = document.querySelector('#initials');
 
+let savedscores = [];
 //adding event listner to the start button.
 document.getElementById("startButton").addEventListener(
     "click",
@@ -22,32 +24,29 @@ document.getElementById("startButton").addEventListener(
         document.getElementById("time").hidden = false;
         document.getElementById("wrapper").hidden = false;
         startTime();
+        showQuestion();
     },
     false
 );
 
 //adding timer with 40 seconds,4 questions and for negative answers decrese 10 seconds.
 let timeLeft = 40;
+let timerId;
 function startTime() {
     // let timeLeft = TIME_LIMIT;
-    const timer = setInterval(() => {
+    timerId = setInterval(() => {
         if (timeLeft <= 0) {
-            clearInterval(timer);
+            clearInterval(timerId);
             showScore();
         } else {
             timeEl.textContent = timeLeft;
             timeLeft--;
-            showQuestion();
-            console.log(currentQuestion);
+
         }
     }, 1000);
 }
-
-
-
 let currentQuestion = 0;
 let score = 0;
-
 function showQuestion() {
     const current = questions[currentQuestion];
     questionElem.textContent = current.title;
@@ -64,8 +63,6 @@ function showQuestion() {
     }
 }
 
-
-
 function checkAnswer(clickedans) {
     // const selected = event.target.getAttribute("data-index");
     let currentanswer = questions[currentQuestion].answer;
@@ -75,39 +72,68 @@ function checkAnswer(clickedans) {
     else {
         timeLeft = timeLeft - 10;
     }
-
     currentQuestion++;
     if (currentQuestion >= questions.length) {
         showScore();
+        clearInterval(timerId);
     }
     else {
-        console.log("here")
         showQuestion();
     }
 }
+
 
 
 function showScore() {
     document.getElementById("time").hidden = true;
     document.getElementById("wrapper").hidden = true;
     document.getElementById("displayscore").hidden = false;
-
     message2.textContent = "Your final score is " + score;
     message3.textContent = "Enter initials: ";
 
+    
+    console.log(initials);
 
-
-    signup.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        var initials = textarea.value;
-
-        if (initials != "") {
-
-            // TODO: Save email and password to localStorage and render the last registered user
-            localStorage.setItem("initials", initials);
-            localStorage.setItem("score", score);
-            //renderLastRegistered();
+    savescore.addEventListener('click', function() {
+        const initials = initialsInput.value.trim();
+        if (initials) {
+            const scores = JSON.parse(localStorage.getItem('scores')) || [];
+            scores.push({ initials, score });
+            localStorage.setItem('scores', JSON.stringify(scores));
         }
+        
+        
+        document.getElementById("displayscore").hidden = true;
+        document.getElementById("highscores").hidden = false;
+        //showHighScores();
     });
 }
+
+
+function showHighScores() {
+    
+    var storedinitials = JSON.parse(localStorage.getItem("initialsStored"));
+    var storedscores = JSON.parse(localStorage.getItem("scoresStored"));
+
+    //show initials and score
+    //displayList.innerHTML = "";
+    for (var i = 0; i < storedinitials.length; i++) {
+        let temp1 = storedinitials[i];
+        let temp2 = storedscores[i];
+        let li = document.createElement("li");
+        li.textContent = temp1;
+        li.setAttribute("data-index", i);
+        displayList.appendChild(li);
+    }
+
+}
+
+function renderMessage() {
+    var lastGrade = JSON.parse(localStorage.getItem("studentGrade"));
+    if (lastGrade !== null) {
+        document.querySelector(".message").textContent = lastGrade.student +
+            " received a/an " + lastGrade.grade
+    }
+}
+
+
