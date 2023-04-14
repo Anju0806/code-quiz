@@ -4,7 +4,7 @@ var gobackEl = document.getElementById("gobackbtn");
 var clearscoresEl = document.getElementById("clearscoresbtn");
 
 gobackEl.addEventListener("click", function () {
-    //displayList=[];
+
     document.getElementById("displayscore").hidden = true;
     document.getElementById("facecard").hidden = false;
     document.getElementById("highscores").hidden = true;
@@ -13,7 +13,6 @@ gobackEl.addEventListener("click", function () {
 });
 
 clearscoresEl.addEventListener("click", function () {
-    //showHighScores();
     localStorage.removeItem("scores");
     showHighScores();
 });
@@ -23,7 +22,7 @@ highscoresLink.addEventListener("click", function () {
 });
 
 
-// Function to display the saved highscores
+
 function showHighScores() {
     document.getElementById("displayscore").hidden = true;
     document.getElementById("facecard").hidden = true;
@@ -36,9 +35,6 @@ function showHighScores() {
         const listItem = document.createElement('TEXTAREA');
         listItem.textContent = "No scores added ";
         displayList.appendChild(listItem);
-        //displayList.disabled=true;
-
-        //return;
     }
 
     else {

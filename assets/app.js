@@ -10,7 +10,7 @@ let message2 = document.getElementById("m2");
 let message3 = document.getElementById("m3");
 
 let savescore = document.querySelector("#submit-scores");
-//let displayList = document.querySelector("#todo-list");
+
 
 const initialsInput = document.querySelector('#initials');
 
@@ -64,7 +64,6 @@ function showQuestion() {
 }
 
 function checkAnswer(clickedans) {
-    // const selected = event.target.getAttribute("data-index");
     let currentanswer = questions[currentQuestion].answer;
     if (clickedans == currentanswer) {
         score++;
@@ -90,10 +89,6 @@ function showScore() {
     document.getElementById("displayscore").hidden = false;
     message2.textContent = "Your final score is " + score;
     message3.textContent = "Enter initials: ";
-
-
-    //console.log(initials);
-
     savescore.addEventListener('click', function () {
         const initials = initialsInput.value.trim();
         if (initials) {
