@@ -20,7 +20,7 @@ document.getElementById("startButton").addEventListener(
     "click",
     () => {
         document.getElementById("facecard").hidden = true;
-        document.getElementById("viewscores").hidden = true;
+        document.getElementById("highscoreslink").hidden = true;
         document.getElementById("time").hidden = false;
         document.getElementById("wrapper").hidden = false;
         startTime();
@@ -91,49 +91,26 @@ function showScore() {
     message2.textContent = "Your final score is " + score;
     message3.textContent = "Enter initials: ";
 
-    
-    console.log(initials);
 
-    savescore.addEventListener('click', function() {
+    //console.log(initials);
+
+    savescore.addEventListener('click', function () {
         const initials = initialsInput.value.trim();
         if (initials) {
             const scores = JSON.parse(localStorage.getItem('scores')) || [];
             scores.push({ initials, score });
             localStorage.setItem('scores', JSON.stringify(scores));
+            savescore.disabled=true;
+
         }
-        
-        
-        document.getElementById("displayscore").hidden = true;
-        document.getElementById("highscores").hidden = false;
-        //showHighScores();
-    });
+        //window.location.href = 'highscores.js';   
+        showHighScores();
+    }); 
+      
 }
 
 
-function showHighScores() {
-    
-    var storedinitials = JSON.parse(localStorage.getItem("initialsStored"));
-    var storedscores = JSON.parse(localStorage.getItem("scoresStored"));
 
-    //show initials and score
-    //displayList.innerHTML = "";
-    for (var i = 0; i < storedinitials.length; i++) {
-        let temp1 = storedinitials[i];
-        let temp2 = storedscores[i];
-        let li = document.createElement("li");
-        li.textContent = temp1;
-        li.setAttribute("data-index", i);
-        displayList.appendChild(li);
-    }
 
-}
-
-function renderMessage() {
-    var lastGrade = JSON.parse(localStorage.getItem("studentGrade"));
-    if (lastGrade !== null) {
-        document.querySelector(".message").textContent = lastGrade.student +
-            " received a/an " + lastGrade.grade
-    }
-}
 
 
