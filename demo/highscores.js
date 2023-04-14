@@ -1,5 +1,22 @@
 
 var highscoresLink = document.getElementById("highscoreslink");
+var gobackEl = document.getElementById("gobackbtn");
+var clearscoresEl = document.getElementById("clearscoresbtn");
+
+gobackEl.addEventListener("click", function () {
+    //displayList=[];
+    document.getElementById("displayscore").hidden = true;
+    document.getElementById("facecard").hidden = false;
+    document.getElementById("highscores").hidden = true;
+    document.getElementById("highscoreslink").hidden = false;
+
+});
+
+clearscoresEl.addEventListener("click", function () {
+    //showHighScores();
+    localStorage.removeItem("scores");
+    showHighScores();
+});
 
 highscoresLink.addEventListener("click", function () {
     showHighScores();
@@ -14,17 +31,22 @@ function showHighScores() {
     document.getElementById("highscoreslink").hidden = true;
 
     var storedscores = JSON.parse(localStorage.getItem("scores")) || [];
-    //var storedscores = JSON.parse(localStorage.getItem("scoresStored")) || [];
-
+    displayList.innerHTML = '';
     if (storedscores.length === 0) {
-        console.log("No highscores found.");
-        return;
-    }
-    for(i=0;i<storedscores.length;i++){
-        const listItem = document.createElement('li');
-        console.log(storedscores.initials);
-        listItem.textContent=storedscores.initials+" "+storedscores.score;
+        const listItem = document.createElement('TEXTAREA');
+        listItem.textContent = "No scores added ";
         displayList.appendChild(listItem);
+        //displayList.disabled=true;
+
+        //return;
     }
-    
+
+    else {
+        for (let i = 0; i < storedscores.length; i++) {
+            const listItem = document.createElement('li');
+            listItem.textContent = storedscores[i].initials + " - " + storedscores[i].score;
+            displayList.appendChild(listItem);
+        }
+    }
+
 }
