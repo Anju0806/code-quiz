@@ -9,6 +9,7 @@ gobackEl.addEventListener("click", function () {
     document.getElementById("facecard").hidden = false;
     document.getElementById("highscores").hidden = true;
     document.getElementById("highscoreslink").hidden = false;
+    location.reload(true);
 
 });
 

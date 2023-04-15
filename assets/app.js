@@ -10,7 +10,7 @@ let message2 = document.getElementById("m2");
 let message3 = document.getElementById("m3");
 
 let savescore = document.querySelector("#submit-scores");
-
+let tempovariable = 0;
 
 const initialsInput = document.querySelector('#initials');
 
@@ -39,7 +39,7 @@ function startTime() {
             clearInterval(timerId);
             showScore();
         } else {
-            timeEl.textContent = "Time: "+timeLeft;
+            timeEl.textContent = "Time: " + timeLeft;
             timeLeft--;
 
         }
@@ -83,8 +83,6 @@ function checkAnswer(clickedans) {
     }
 }
 
-
-
 function showScore() {
     document.getElementById("time").hidden = true;
     document.getElementById("wrapper").hidden = true;
@@ -93,18 +91,32 @@ function showScore() {
     message3.textContent = "Enter initials: ";
     savescore.addEventListener('click', function () {
         const initials = initialsInput.value.trim();
+        //var storedscoresls = JSON.parse(localStorage.getItem("scores")) || [];
         if (initials) {
             const scores = JSON.parse(localStorage.getItem('scores')) || [];
-            scores.push({ initials, score });
-            localStorage.setItem('scores', JSON.stringify(scores));
-            savescore.disabled=true;
+            //console.log(scores.initials);
+            for (let i = 0; i < scores.length; i++) {
+                console.log(typeof(scores[i].initials));
+                console.log(typeof(initials));
 
+                if ((scores[i].initials == initials) && (scores[i].scores == score)) {
+                    console.log(het)
+                    tempovariable = 1;
+                    return;
+                }
+            }
+            if (tempovariable === 0) {
+                scores.push({ initials, score });
+                localStorage.setItem('scores', JSON.stringify(scores));
+                savescore.disabled = true;
+            }
         }
-        //window.location.href = 'highscores.js';   
+        
         showHighScores();
-    }); 
-      
+    });
+
 }
+
 
 
 

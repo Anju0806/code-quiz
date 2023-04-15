@@ -30,6 +30,7 @@ body {
     padding: 50px;
     background-color: #f6fafa;
   }
+
   #choices{
     display: flex;
     flex-direction: column;
@@ -58,7 +59,7 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   }
 
-  
+  /*  adding style to the choice buttons */
   .choice-button {
     background-color:  #0b8b72;
   color: #efeded;
@@ -127,14 +128,16 @@ body {
     color: #fff;
     border: 2px solid #ccc;
   }
-
+/* adding styles to highscore list */
   #displayList{
+
     padding: 25px;
-    padding-left: 20rem;
+    padding-left: 25rem; 
     
   }
   .l1{
     
-    padding-right: 20rem;
-  
+    padding-right: 25rem;
+    white-space: nowrap;
   }
+  

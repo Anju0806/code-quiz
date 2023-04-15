@@ -11,9 +11,8 @@
 
 <body>
     <section>
-        <a href="#" id="highscoreslink">View Highscores</a>
+        <a href="#" id="highscoreslink">View Highscores</a> <!-- link to view saved highscores -->
     </section>
-
     <section id="time" hidden>
         <h2></h2> <!-- time element -->
     </section>
@@ -21,22 +20,20 @@
         <section id="facecard">
             <h2 class="title">Coding Quiz Challenge</h2>
             <p>Try to answer following code related questions with the time limits. Keep in mind the incorrect answers
-                will
-                penalize your score by ten seconds!!</p>
-            <button class ="quiz-button" id="startButton"> START QUIZ</button>
+                will penalize your score by ten seconds!!</p>
+            <button class="quiz-button" id="startButton"> START QUIZ</button>
         </section>
-
+        <!-- wrapper class for questions and choices -->
         <section id="wrapper" hidden>
             <section id="container">
                 <div id="questtitle"></div>
                 <div id="choices"></div>
             </section>
         </section>
-
         <section class="card">
+            <!-- displayscore class for displaying current scores and getting initials input-->
             <section id="displayscore" hidden>
                 <form id="saveinitials">
-                   
                     <h2 class="title">All done!!</h2><br>
                     <label id="m2"></label><br><br>
                     <label id="m3"></label>
@@ -44,8 +41,8 @@
                     <button id="submit-scores">Submit</button>
                 </form>
             </section>
+            <!-- highscores class for displaying saved initials and scores -->
             <section id="highscores" hidden>
-                
                 <h2 class="title" id="s1">Highscores</h2>
                 <ol id="displayList"></ol>
                 <label id="l1"></label><br><br>
@@ -57,10 +54,6 @@
     <script src="./assets/highscores.js"></script>
     <script src="./assets/questions.js"></script>
     <script src="./assets/app.js"></script>
-    <!-- <footer>
-		<p> My JS Quiz </p>
-	</footer> -->
-
 </body>
 
 </html>
