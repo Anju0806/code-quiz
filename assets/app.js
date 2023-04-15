@@ -10,7 +10,7 @@ let message2 = document.getElementById("m2");
 let message3 = document.getElementById("m3");
 
 let savescore = document.querySelector("#submit-scores");
-let tempovariable = 0;
+
 
 const initialsInput = document.querySelector('#initials');
 
@@ -91,27 +91,34 @@ function showScore() {
     message3.textContent = "Enter initials: ";
     savescore.addEventListener('click', function () {
         const initials = initialsInput.value.trim();
-        //var storedscoresls = JSON.parse(localStorage.getItem("scores")) || [];
+        let existingIndex=-1;
         if (initials) {
-            const scores = JSON.parse(localStorage.getItem('scores')) || [];
-            //console.log(scores.initials);
-            for (let i = 0; i < scores.length; i++) {
-                console.log(typeof(scores[i].initials));
-                console.log(typeof(initials));
+            var scores = JSON.parse(localStorage.getItem('scores')) || [];
+            let existingIndex = scores.findIndex(entry => entry.initials === initials);
+            let tempovariable = 0;
+            
 
-                if ((scores[i].initials == initials) && (scores[i].scores == score)) {
-                    console.log(het)
+            for (let i = 0; i < scores.length; i++) {
+
+                if ((scores[i].initials == initials) && (scores[i].score >= score)) {
                     tempovariable = 1;
-                    return;
                 }
             }
-            if (tempovariable === 0) {
+            if (existingIndex !== -1) {
+                // If an existing entry with the same initials exists, remove it if the new score is higher
+                if (scores[existingIndex].score < score) {
+                  scores.splice(existingIndex, 1);
+                } 
+              }
+
+            if (tempovariable == 0) {
                 scores.push({ initials, score });
+                scores.sort((a, b) => b.score - a.score);
                 localStorage.setItem('scores', JSON.stringify(scores));
                 savescore.disabled = true;
             }
         }
-        
+
         showHighScores();
     });
 
